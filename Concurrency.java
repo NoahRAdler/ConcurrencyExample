@@ -1,6 +1,4 @@
 //Noah Adler 10/19/2020
-package mypackage;
-
 //handles the threads outside of main
 class MessageLoop implements Runnable
 {
@@ -29,7 +27,7 @@ class MessageLoop implements Runnable
 		}
 		catch(InterruptedException e)
 		{
-			return; //intentionally blank, add to later if required
+			return; //intentionally blank, add to later if requirements change
 		}
 	}
 }
@@ -40,11 +38,11 @@ class Concurrency
 	{
 		int trueMaxWait = 4; //upper bound of time waited
 		
-		//from 40k lexicanum quotes, used for their succinctness
-		String[] messages = {"1. Toll the Great Bell Once!",
-				"2. With push of Button fire the Engine",
-				"3. Spark Turbine into life",
-				"4. Sing Praise to the God of All Machines"};
+		//messages to print
+		String[] messages = {"1. Ring once ",
+				"2. Ring twice ",
+				"3. Ring three times ",
+				"4. Ring four "};
 		MessageLoop threadOb1 = new MessageLoop(messages, 4);
 		
 		for(int maxWaitTime = 1; maxWaitTime <= trueMaxWait; maxWaitTime++)
@@ -61,8 +59,8 @@ class Concurrency
 			
 			System.out.println("Main: Waiting for MessageLoop to finish");
 			
-			//	timer for each thread based off current wait time.
-			//  two checks for if thread active for cleaner output.
+			//  timer for each thread based off current wait time.
+			//  purposely interrupt instances while increasing maxWaitTime with a new instance until the last
 			for(int i = 0; i < maxWaitTime; i++)
 			{
 					Thread.sleep(500);
